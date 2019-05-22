@@ -2,6 +2,7 @@ import subprocess
 
 
 def execute(host):
+
     log(DEBUG, "Executing Vim_files.py for host: " + host.hostname)
     results=[]
     cmd={
@@ -16,6 +17,7 @@ def execute(host):
             host.hostname+":/home/flare/.vim",'/home/flare/.vim']
     }
 
+    # for every item in dictionary execute and log it
     for key in cmd:
         log(DEBUG,"Executing \"" +str(key) +"\" in vim_files.py")
         results.append(subprocess.check_output(cmd[key]))

@@ -13,6 +13,8 @@ def run_includes():
             # Test to see if you can call anonfunctions and set external log
             # functions
             script=getattr(includes,i)
+            # Test for setting attributes to imported modules  (log func 
+            # defined above)
             setattr(script,"log",log)
             script.execute()
 

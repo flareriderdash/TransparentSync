@@ -4,6 +4,7 @@ class _host:
         self.hostname=hostname
         self.online=False
 
+# Host file parsing
 def host_parse(hostfile):
     lines=hostfile.read().split("\n")
     lines=lines[:len(lines)-1] # cleans excess ''

@@ -6,11 +6,13 @@ import datetime
 DEBUG=1
 FATAL=2
 
+# Host class to turn config host files into actual data structures
 class _host:
     def __init__(self,hostname):
         self.hostname=hostname
         self.online=False
 
+# logging, Duh
 def log(priority,message):
     if (priority == DEBUG):
         priority = "[DEBUG, %s] " % datetime.datetime.now()
@@ -19,6 +21,7 @@ def log(priority,message):
     logfile.write(priority + message+"\n")
     logfile.flush()
 
+# takes host object and does operations testing network connectivity
 def ping(h):
     log(DEBUG, "Pinging host: " +h.hostname)
     cmd={ 
@@ -34,6 +37,7 @@ def ping(h):
         log(DEBUG,"Ping failed!")
         return False
 
+# Parses host files and return _host objects
 def host_parse(hostfile):
     log(DEBUG, "Parsing Hosts")
     lines=hostfile.read().split("\n")
@@ -49,6 +53,8 @@ def host_parse(hostfile):
     # And return all hosts
     return hosts
 
+# Get all User defined functions from "scripts" dir and execute them
+# h is a _host object 
 def execute_functions(h):
     global log
     global logfile

@@ -5,6 +5,7 @@ class _host:
         self.hostname=hostname
         self.online=False
 
+# Tests for connectivity 
 def ping(host):
     cmd={
             "ping" : ["ping", "-c 4" , host.hostname]
@@ -19,6 +20,7 @@ def ping(host):
 
 
 
+# create list of host objects
 hosts=[_host("Flare-121"), _host("Flare-120")]
 
 
